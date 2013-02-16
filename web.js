@@ -67,6 +67,7 @@ app.get('/', function (req, res, next) {
     .extent(width, height)
     .stream(function (err, stdout, stderr) {
       if (err) return next(err);
+      stderr.pipe(process.stderr);
       res.writeHead(200, {'Content-Type': mimeType});
       stdout.pipe(res);
     });
