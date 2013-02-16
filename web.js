@@ -1,4 +1,5 @@
 // @see https://devcenter.heroku.com/articles/nodejs#write-your-app
+
 var express = require('express')
   , fs      = require('fs') // node
   , gm      = require('gm')
@@ -6,6 +7,8 @@ var express = require('express')
   , https   = require('https') // node
   , mime    = require('mime') // express
   , url     = require('url') // node
+  // @see http://aaronheckmann.posterous.com/graphicsmagick-on-heroku-with-nodejs
+  , imageMagick = gm.subClass({imageMagick: true})
   , app = express.createServer(express.logger())
   , mimeTypes = [
     'image/jpeg',
@@ -60,7 +63,7 @@ app.get('/', function (req, res, next) {
     }
 
     // @see https://github.com/aheckmann/gm#constructor
-    gm(res2, 'image.' + mime.extension(mimeType))
+    imageMagick(res2, 'image.' + mime.extension(mimeType))
     // @see http://www.imagemagick.org/Usage/thumbnails/#cut
     .resize(width, height + '^>')
     .gravity('Center')
