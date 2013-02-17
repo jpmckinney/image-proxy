@@ -1,11 +1,16 @@
 # Image Proxy
 
-A simple app based on mySociety's [connect-image-proxy](https://github.com/mysociety/node-connect-image-proxy) middleware for proxying and manipulating images.
+A simple Express app for proxying and manipulating images.
 
 ## Getting Started
 
     npm install
     node web.js
+    curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72
+
+The URL structure is `/:url/:width/:height`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. The equivalent ImageMagick command is:
+
+    convert in.jpg -thumbnail 100x100^> -gravity center -extent 100x100 out.jpg
 
 ## Deployment
 
@@ -16,6 +21,10 @@ A simple app based on mySociety's [connect-image-proxy](https://github.com/mysoc
     heroku config:set NODE_ENV=production
     git push heroku master
     heroku apps:open
+
+## AWS CloudFront
+
+Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app. Use all default settings. CloudFront will cache your images for a year.
 
 ## Bugs? Questions?
 

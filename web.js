@@ -17,17 +17,12 @@ var express = require('express')
     'image/jpg',
   ];
 
-app.get('/', function (req, res, next) {
+app.get('/:url/:width/:height', function (req, res, next) {
   //@todo Allow requests from authorized hosts only.
 
-  var remote = req.param('url')
-    , width = req.param('width')
-    , height = req.param('height');
-
-  // Require query string parameters.
-  if (!remote || !width || !height) {
-    return res.send('Expected url, width and height query string parameters', 404);
-  }
+  var remote = req.params.url
+    , width = req.params.width
+    , height = req.params.height;
 
   // Validate query string parameters.
   var parts = url.parse(remote);
@@ -71,7 +66,11 @@ app.get('/', function (req, res, next) {
     .stream(function (err, stdout, stderr) {
       if (err) return next(err);
       stderr.pipe(process.stderr);
-      res.writeHead(200, {'Content-Type': mimeType});
+      // @see http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html
+      res.writeHead(200, {
+        'Content-Type': mimeType,
+        'Cache-Control': 'max-age=31536000, public', // 1 year
+      });
       stdout.pipe(res);
     });
   }).on('error', next);
