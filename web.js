@@ -54,7 +54,7 @@ app.get('/:url/:width/:height', function (req, res, next) {
           imageMagick(res2, 'image.' + mime.extension(mimeType))
           // @see http://www.imagemagick.org/Usage/thumbnails/#cut
           .resize(width, height + '^>')
-          .gravity('North') // faces are closer to top
+          .gravity('Center') // faces are most often near the center
           .extent(width, height)
           .stream(function (err, stdout, stderr) {
             if (err) return next(err);
