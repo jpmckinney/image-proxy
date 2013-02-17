@@ -12,6 +12,8 @@ The URL structure is `/:url/:width/:height`. The `:url` parameter must be escape
 
     convert in.jpg -thumbnail 100x100^> -gravity center -extent 100x100 out.jpg
 
+The `Cache-Control` header sets a `max-age` of one year.
+
 ## Deployment
 
 ### Heroku
@@ -24,7 +26,7 @@ The URL structure is `/:url/:width/:height`. The `:url` parameter must be escape
 
 ## AWS CloudFront
 
-Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app. Use all default settings. CloudFront will cache your images for a year.
+Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app. Use all default settings.
 
 ## Bugs? Questions?
 
