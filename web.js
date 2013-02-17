@@ -18,8 +18,6 @@ var express = require('express')
   ];
 
 app.get('/:url/:width/:height', function (req, res, next) {
-  //@todo Allow requests from authorized hosts only.
-
   var remote = req.params.url
     , width = req.params.width
     , height = req.params.height;
