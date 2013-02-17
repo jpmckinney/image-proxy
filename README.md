@@ -24,7 +24,7 @@ The `Cache-Control` header sets a `max-age` of one year.
     git push heroku master
     heroku apps:open
 
-## AWS CloudFront
+### AWS CloudFront
 
 Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app. Use all default settings.
 
