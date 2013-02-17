@@ -58,6 +58,7 @@ app.get('/:url/:width/:height', function (req, res, next) {
           .extent(width, height)
           .stream(function (err, stdout, stderr) {
             if (err) return next(err);
+            // Log errors in production.
             stderr.pipe(process.stderr);
             // @see http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Expiration.html
             res.writeHead(200, {
