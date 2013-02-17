@@ -30,7 +30,7 @@ app.get('/:url/:width/:height', function (req, res, next) {
         return res.send('Expected url to include a hostname', 404);
       }
 
-      var agent = parts['protocol'] === 'http:' ? http : https,
+      var agent = parts['protocol'] === 'http:' ? http : https
         // @see http://nodejs.org/api/http.html#http_http_get_options_callback
         , request = agent.get(remote, function (res2) {
           // @see http://nodejs.org/api/http.html#http_response_statuscode
