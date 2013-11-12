@@ -1,13 +1,17 @@
 {
   "name": "image-proxy",
+  "description": "A simple image proxy optimized for headshots",
   "version": "0.0.1",
+  "author": "James McKinney <james@opennorth.ca>",
   "dependencies": {
     "express": "2.5.x",
     "mime": "1.2.x",
     "gm": ">= 1.3.0"
   },
+  "repository": "git://github.com/opennorth/image-proxy",
+  "main": "index.js",
   "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
-  }
+    "node": "*"
+  },
+  "license": "MIT"
 }

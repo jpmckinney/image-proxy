@@ -76,11 +76,17 @@ app.get('/:url/:width/:height', function (req, res, next) {
     };
 
   // Validate query string parameters.
-  if (isNaN(parseFloat(width))) {
+  if (isNaN(parseInt(width))) {
     return res.send('Expected width to be an integer', 404);
   }
-  if (isNaN(parseFloat(height))) {
+  if (parseInt(width) > 1000) {
+    return res.send('Expected width to be less than or equal to 1000', 404);
+  }
+  if (isNaN(parseInt(height))) {
     return res.send('Expected height to be an integer', 404);
+  }
+  if (parseInt(height) > 1000) {
+    return res.send('Expected height to be less than or equal to 1000', 404);
   }
 
   retrieve(req.params.url);

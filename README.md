@@ -1,11 +1,11 @@
 # Image Proxy
 
-A simple Express app for proxying and manipulating images.
+A simple Express app for proxying and manipulating images, specifically headshots. See [node-imageable](https://github.com/sdepold/node-imageable) and [node-imageable-server](https://github.com/dawanda/node-imageable-server) if you need more flexibility.
 
 ## Getting Started
 
     npm install
-    node web.js
+    node index.js
     curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72
 
 The URL structure is `/:url/:width/:height`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. The equivalent ImageMagick command is:
@@ -26,7 +26,28 @@ The `Cache-Control` header sets a `max-age` of one year.
 
 ### AWS CloudFront
 
-Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app. Use all default settings.
+Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app.
+
+## Features
+
+Image proxy:
+
+* Supports HTTP and HTTPS
+* Follows 301 and 302 redirects
+* Sets a maximum timeout for the remote server
+* Handles complex MIME types like `image/jpeg; charset=utf-8`
+
+Image manipulation:
+
+* Accepts a custom width and height
+* Resizes, centers and crops the image
+
+HTTP server:
+
+* No query string parameters (preferred by CloudFront)
+* Adds a Cache-Control header
+
+The code is under 100 lines, making it easy to tailor to your needs.
 
 ## Bugs? Questions?
 
@@ -34,6 +55,6 @@ This project's main repository is on GitHub: [http://github.com/opennorth/image-
 
 ## Acknowledgements
 
-This project is developed by [Open North](http://www.opennorth.ca/) through a partnership with the [Participatory Politics Foundation](http://www.participatorypolitics.org/).
+This project is developed by [Open North](http://www.opennorth.ca/) through a partnership with the [Participatory Politics Foundation](http://www.participatorypolitics.org/) and is inspired by [node-connect-image-proxy](https://github.com/mysociety/node-connect-image-proxy).
 
 Copyright (c) 2013 Open North Inc., released under the MIT license
