@@ -23,14 +23,14 @@ app.get('/:url/:width/:height', function (req, res, next) {
     , retrieve = function (remote) {
       // @see http://nodejs.org/api/url.html#url_url
       var parts = url.parse(remote);
-      if (['https:', 'http:'].indexOf(parts['protocol']) === -1) {
-        return res.send('Expected url to use the HTTP or HTTPS protocol', 404);
+      if (['https:', 'http:'].indexOf(parts.protocol) === -1) {
+        return res.send('Expected URI scheme to be HTTP or HTTPS', 404);
       }
-      if (!parts['hostname']) {
-        return res.send('Expected url to include a hostname', 404);
+      if (!parts.hostname) {
+        return res.send('Expected URI host to be non-empty', 404);
       }
 
-      var agent = parts['protocol'] === 'http:' ? http : https
+      var agent = parts.protocol === 'http:' ? http : https
         // @see http://nodejs.org/api/http.html#http_http_get_options_callback
         , request = agent.get(remote, function (res2) {
           // @see http://nodejs.org/api/http.html#http_response_statuscode
@@ -76,6 +76,19 @@ app.get('/:url/:width/:height', function (req, res, next) {
     };
 
   // Validate query string parameters.
+  if (whitelist.length) {
+    var parts = url.parse(req.params.url)
+      , any = false;
+    for (var _i = 0, _len = whitelist.length; _i < _len; _i++) {
+      if (whitelist[_i].test(parts.hostname)) {
+        any = true;
+        break;
+      }
+    }
+    if (!any) { // if none
+      return res.send('Expected URI host to be whitelisted', 404);
+    }
+  }
   if (isNaN(parseInt(width))) {
     return res.send('Expected width to be an integer', 404);
   }
@@ -93,6 +106,7 @@ app.get('/:url/:width/:height', function (req, res, next) {
 });
 
 var port = process.env.PORT || 5000;
+var whitelist = process.env.WHITELIST || []; // [/google\.com$/, /facebook\.com$/]
 app.listen(port, function () {
   console.log('Listening on ' + port);
 });

@@ -1,6 +1,8 @@
 # Image Proxy
 
-A simple Express app for proxying and manipulating images, specifically headshots. See [node-imageable](https://github.com/sdepold/node-imageable) and [node-imageable-server](https://github.com/dawanda/node-imageable-server) if you need more flexibility.
+A simple Express app for proxying and manipulating images, specifically headshots.
+
+The code is just over 100 lines, making it easy to tailor to your needs.
 
 ## Getting Started
 
@@ -39,7 +41,7 @@ Image proxy:
 
 Image manipulation:
 
-* Accepts a custom width and height
+* Accepts a custom width and height, up to a maximum extent
 * Resizes, centers and crops the image
 
 HTTP server:
@@ -47,7 +49,7 @@ HTTP server:
 * No query string parameters (preferred by CloudFront)
 * Adds a Cache-Control header
 
-The code is under 100 lines, making it easy to tailor to your needs.
+If you need more features, see [node-imageable](https://github.com/sdepold/node-imageable) and [node-imageable-server](https://github.com/dawanda/node-imageable-server).
 
 ## Bugs? Questions?
 
