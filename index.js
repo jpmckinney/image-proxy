@@ -106,7 +106,7 @@ app.get('/:url/:width/:height', function (req, res, next) {
 });
 
 var port = process.env.PORT || 5000;
-var whitelist = process.env.WHITELIST || []; // [/google\.com$/, /facebook\.com$/]
+var whitelist = process.env.WHITELIST || []; // [/\.gov$/, /google\.com$/]
 app.listen(port, function () {
   console.log('Listening on ' + port);
 });

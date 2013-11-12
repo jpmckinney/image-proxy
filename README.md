@@ -38,6 +38,7 @@ Image proxy:
 * Follows 301 and 302 redirects
 * Sets a maximum timeout for the remote server
 * Handles complex MIME types like `image/jpeg; charset=utf-8`
+* Optional whitelisting using regular expressions
 
 Image manipulation:
 
