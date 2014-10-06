@@ -11,7 +11,8 @@ env:
   - DELAY=500 WHITELIST=httpbin.org,dummyimage.com MODULES="express@~3 gm@1.2.0 mime@1.0.0"
   - DELAY=500 WHITELIST=httpbin.org,dummyimage.com MODULES=""
 install:
-  - npm install $MODULES .
+  - npm install $MODULES
+  - npm install
 after_script:
   # @see https://github.com/cainus/node-coveralls#istanbul
   - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
