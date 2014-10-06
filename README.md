@@ -1,5 +1,10 @@
 # Image Proxy
 
+[![NPM version](https://badge.fury.io/js/image-proxy.svg)](http://badge.fury.io/js/image-proxy)
+[![Build Status](https://secure.travis-ci.org/opennorth/image-proxy.png)](http://travis-ci.org/opennorth/image-proxy)
+[![Dependency Status](https://david-dm.org/opennorth/image-proxy.svg)](https://david-dm.org/opennorth/image-proxy)
+[![Coverage Status](https://coveralls.io/repos/opennorth/image-proxy/badge.png?branch=master)](https://coveralls.io/r/opennorth/image-proxy)
+
 A simple Express app for proxying and manipulating images, specifically headshots.
 
 The code is just over 100 lines, making it easy to tailor to your needs.
@@ -7,7 +12,7 @@ The code is just over 100 lines, making it easy to tailor to your needs.
 ## Getting Started
 
     npm install
-    node index.js
+    npm start
     curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72
 
 The URL structure is `/:url/:width/:height`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. The equivalent ImageMagick command is:
@@ -15,6 +20,28 @@ The URL structure is `/:url/:width/:height`. The `:url` parameter must be escape
     convert in.jpg -thumbnail 100x100^> -gravity center -extent 100x100 out.jpg
 
 The `Cache-Control` header sets a `max-age` of one year.
+
+## Features
+
+Image proxy:
+
+* Supports HTTP and HTTPS
+* Follows 301 and 302 redirects
+* Sets a maximum timeout for the remote server, through a `DELAY` environment variable (default `5000`)
+* Handles complex MIME types like `image/jpeg; charset=utf-8`
+* Optional whitelisting using regular expressions, through a `WHITELIST` environment variable
+
+Image manipulation:
+
+* Accepts a custom width and height, up to a maximum extent
+* Resizes, centers and crops the image
+
+HTTP server:
+
+* No query string parameters (preferred by CloudFront)
+* Adds a Cache-Control header
+
+If you need more features, see [node-imageable](https://github.com/sdepold/node-imageable) and [node-imageable-server](https://github.com/dawanda/node-imageable-server).
 
 ## Deployment
 
@@ -30,27 +57,9 @@ The `Cache-Control` header sets a `max-age` of one year.
 
 Create a distribution and set the "Origin Domain Name" to the domain name of your Heroku app.
 
-## Features
+## Testing
 
-Image proxy:
-
-* Supports HTTP and HTTPS
-* Follows 301 and 302 redirects
-* Sets a maximum timeout for the remote server
-* Handles complex MIME types like `image/jpeg; charset=utf-8`
-* Optional whitelisting using regular expressions
-
-Image manipulation:
-
-* Accepts a custom width and height, up to a maximum extent
-* Resizes, centers and crops the image
-
-HTTP server:
-
-* No query string parameters (preferred by CloudFront)
-* Adds a Cache-Control header
-
-If you need more features, see [node-imageable](https://github.com/sdepold/node-imageable) and [node-imageable-server](https://github.com/dawanda/node-imageable-server).
+    npm test
 
 ## Bugs? Questions?
 
