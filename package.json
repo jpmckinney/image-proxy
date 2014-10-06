@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "./bin/image-proxy",
-    "test": "DELAY=500 WHITELIST=httpbin.org,dummyimage.com mocha"
+    "test": "DELAY=1000 WHITELIST=httpbin.org,dummyimage.com mocha"
   },
   "dependencies": {
     "express": ">=3",
@@ -26,7 +26,6 @@
     "coveralls": "~2.11",
     "istanbul": "~0.3",
     "mocha": "~1",
-    "nock": "~0.48",
     "supertest": "~0.14"
   },
   "engines": {

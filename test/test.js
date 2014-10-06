@@ -1,40 +1,62 @@
-var nock = require('nock')
+var nock
   , request = require('supertest')
-  , app = require('../lib/image-proxy')()
-  , mock = nock('http://httpbin.org')
-      // Redirect
-      .get('/redirect-to?url=http://dummyimage.com/500/500')
-      .reply(302, null, {
-        'Location': 'http://dummyimage.com/500/500'
-      })
-      // Empty Location header
-      .get('/redirect-to?url')
-      .reply(302, null, {
-        'Location': ''
-      })
-      // Non-200
-      .get('/status/404')
-      .reply(404)
-      // Empty Content-Type header
-      .get('/response-headers?Content-Type')
-      .reply(200)
-      // Non-image
-      .get('/response-headers?Content-Type=text/plain')
-      .reply(200, null, {
-        'Content-Type': 'text/plain'
-      })
-      // Complex Content-Type header
-      .get('/response-headers?Content-Type=image/png;%20charset=utf-8')
-      .reply(200, '', {
-        'Content-Type': 'image/png; charset=utf-8'
-      })
-      // Timeout
-      .get('/delay/1')
-      .delayConnection(1000)
-      .reply(200, '', {
-        'Content-Type': 'image/png'
-      });
+  , app = require('../lib/image-proxy')();
 
+// nock is compatible with node >= 0.10
+try {
+  nock = require('nock');
+} catch (e) {
+  var Mock = (function () {
+    function Mock(){}
+    Mock.prototype.get = function(){return this}
+    Mock.prototype.reply = function(){return this}
+    Mock.prototype.delayConnection = function(){return this}
+    return Mock;
+  })();
+
+  nock = function(){return new Mock()}
+}
+
+nock('http://httpbin.org')
+
+// Redirect
+.get('/redirect-to?url=http://dummyimage.com/500/500')
+.reply(302, null, {
+  'Location': 'http://dummyimage.com/500/500'
+})
+
+// Empty Location header
+.get('/redirect-to?url')
+.reply(302, null, {
+  'Location': ''
+})
+
+// Non-200
+.get('/status/404')
+.reply(404)
+
+// Empty Content-Type header
+.get('/response-headers?Content-Type')
+.reply(200)
+
+// Non-image
+.get('/response-headers?Content-Type=text/plain')
+.reply(200, null, {
+  'Content-Type': 'text/plain'
+})
+
+// Complex Content-Type header
+.get('/response-headers?Content-Type=image/png;%20charset=utf-8')
+.reply(200, '', {
+  'Content-Type': 'image/png; charset=utf-8'
+})
+
+// Timeout
+.get('/delay/2')
+.delayConnection(2000)
+.reply(200, '', {
+  'Content-Type': 'image/png'
+});
 
 describe('GET /:url/:width/:height', function () {
   it('fails if a host is not in the whitelist', function (done) {
@@ -107,7 +129,7 @@ describe('GET /:url/:width/:height', function () {
     request(app)
       .get('/http%3A%2F%2Fhttpbin.org%2Fresponse-headers%3FContent-Type/100/100')
       .expect('Content-Type', 'text/html; charset=utf-8')
-      .expect(404, 'Expected content type image/gif, image/jpeg, image/png, image/jpg, got undefined', done);
+      .expect(404, 'Expected content type image/gif, image/jpeg, image/png, image/jpg, got ', done);
   });
   it('fails if the content type is invalid', function (done) {
     request(app)
@@ -124,7 +146,7 @@ describe('GET /:url/:width/:height', function () {
 
   // it('timesout if the request takes longer than 5 seconds', function (done) {
   //   request(app)
-  //     .get('/http%3A%2F%2Fhttpbin.org%2Fdelay%2F1/100/100')
+  //     .get('/http%3A%2F%2Fhttpbin.org%2Fdelay%2F2/100/100')
   //     .expect(504, done);
   // });
 
