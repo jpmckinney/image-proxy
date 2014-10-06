@@ -1,6 +1,14 @@
 var request = require('supertest')
   , app = require('../lib/image-proxy')();
 
+var mock = require('http').createServer(function (req, res) {
+  res.writeHead(200, {
+    'Content-Type': 'image/png; charset=utf-8'
+  });
+  res.end(require('fs').readFileSync('./test/fixtures/test.png'), 'binary');
+});
+mock.listen(8080);
+
 describe('GET /:url/:width/:height', function () {
   it('fails if a host is not in the whitelist', function (done) {
     request(app)
@@ -82,7 +90,7 @@ describe('GET /:url/:width/:height', function () {
   });
   it('parses a complex content type', function (done) {
     request(app)
-      .get('/http%3A%2F%2Fhttpbin.org%2Fresponse-headers%3FContent-Type%3Dimage%2Fpng%3B%2520charset%3Dutf-8/100/100')
+      .get('/http%3A%2F%2Flocalhost:8080%2Ftest.png/100/100')
       .expect('Content-Type', 'image/png')
       .expect(200, done);
   });

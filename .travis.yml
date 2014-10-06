@@ -16,4 +16,4 @@ install:
   - npm install
 after_script:
   # @see https://github.com/cainus/node-coveralls#istanbul
-  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+  - DELAY=1000 WHITELIST=httpbin.org,dummyimage.com,localhost istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
