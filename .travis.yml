@@ -4,12 +4,12 @@ node_js:
   - "0.10"
   - "0.8"
   - "0.6"
-  # supertest >=0.12.0 uses superagent >=0.18.0, which uses util.deprecate, which requires node >= 0.8
+  # supertest >=0.12.0 uses superagent >=0.18.0, which uses util.deprecate from node >=0.8
 env:
   # express 3.0 was released late 2012
   # gm 1.2.0 added extent and gravity
-  # mime 1.0.0 is its first published version
-  - MODULES="express@~3 gm@1.2.0 mime@1.0.0"
+  # mime 1.1.0 added extension
+  - MODULES="express@~3 gm@1.2.0 mime@1.1.0"
   - MODULES=""
 install:
   - npm install $MODULES
