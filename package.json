@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "./bin/image-proxy",
-    "test": "DELAY=1000 WHITELIST=httpbin.org,dummyimage.com,localhost mocha --timeout 2500"
+    "test": "DELAY=100 WHITELIST=localhost mocha"
   },
   "dependencies": {
     "express": ">=3",
