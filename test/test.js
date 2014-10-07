@@ -154,13 +154,13 @@ describe('GET /:url/:width/:height', function () {
       .expect('Cache-Control', 'max-age=31536000, public')
       .expect(200, done);
   });
-  // it('follows local redirects', function (done) {
-  //   request(app)
-  //     .get('/http%3A%2F%2Flocalhost:8080%2Flocation-relative/100/100')
-  //     .expect('Content-Type', 'image/png')
-  //     .expect('Cache-Control', 'max-age=31536000, public')
-  //     .expect(200, done);
-  // });
+  it('follows local redirects', function (done) {
+    request(app)
+      .get('/http%3A%2F%2Flocalhost:8080%2Flocation-relative/100/100')
+      .expect('Content-Type', 'image/png')
+      .expect('Cache-Control', 'max-age=31536000, public')
+      .expect(200, done);
+  });
   it('fails if the Location header is empty', function (done) {
     request(app)
       .get('/http%3A%2F%2Flocalhost:8080%2Flocation-empty/100/100')
