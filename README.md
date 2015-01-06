@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/image-proxy.svg)](http://badge.fury.io/js/image-proxy)
 [![Build Status](https://secure.travis-ci.org/jpmckinney/image-proxy.png)](http://travis-ci.org/jpmckinney/image-proxy)
 [![Dependency Status](https://david-dm.org/jpmckinney/image-proxy.svg)](https://david-dm.org/jpmckinney/image-proxy)
-[![Coverage Status](https://coveralls.io/repos/jpmckinney/image-proxy/badge.png?branch=master)](https://coveralls.io/r/jpmckinney/image-proxy)
+[![Coverage Status](https://coveralls.io/repos/jpmckinney/image-proxy/badge.png)](https://coveralls.io/r/jpmckinney/image-proxy)
 
 A simple Express app for proxying and manipulating images, specifically headshots.
 
