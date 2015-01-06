@@ -1,9 +1,9 @@
 # Image Proxy
 
 [![NPM version](https://badge.fury.io/js/image-proxy.svg)](http://badge.fury.io/js/image-proxy)
-[![Build Status](https://secure.travis-ci.org/opennorth/image-proxy.png)](http://travis-ci.org/opennorth/image-proxy)
-[![Dependency Status](https://david-dm.org/opennorth/image-proxy.svg)](https://david-dm.org/opennorth/image-proxy)
-[![Coverage Status](https://coveralls.io/repos/opennorth/image-proxy/badge.png?branch=master)](https://coveralls.io/r/opennorth/image-proxy)
+[![Build Status](https://secure.travis-ci.org/jpmckinney/image-proxy.png)](http://travis-ci.org/jpmckinney/image-proxy)
+[![Dependency Status](https://david-dm.org/jpmckinney/image-proxy.svg)](https://david-dm.org/jpmckinney/image-proxy)
+[![Coverage Status](https://coveralls.io/repos/jpmckinney/image-proxy/badge.png?branch=master)](https://coveralls.io/r/jpmckinney/image-proxy)
 
 A simple Express app for proxying and manipulating images, specifically headshots.
 
@@ -53,7 +53,7 @@ If you need more features, see [node-imageable](https://github.com/sdepold/node-
 
 ### Heroku
 
-    git clone https://github.com/opennorth/image-proxy.git
+    git clone https://github.com/jpmckinney/image-proxy.git
     heroku create
     heroku config:set NODE_ENV=production
     git push heroku master
@@ -67,12 +67,8 @@ Create a distribution and set the "Origin Domain Name" to the domain name of you
 
     npm test
 
-## Bugs? Questions?
-
-This project's main repository is on GitHub: [http://github.com/opennorth/image-proxy](http://github.com/opennorth/image-proxy), where your contributions, forks, bug reports, feature requests, and feedback are greatly welcomed.
-
 ## Acknowledgements
 
-This project is developed by [Open North](http://www.opennorth.ca/) through a partnership with the [Participatory Politics Foundation](http://www.participatorypolitics.org/) and is inspired by [node-connect-image-proxy](https://github.com/mysociety/node-connect-image-proxy).
+This project is inspired by [node-connect-image-proxy](https://github.com/mysociety/node-connect-image-proxy).
 
-Copyright (c) 2013 Open North Inc., released under the MIT license
+Copyright (c) 2013 James McKinney, released under the MIT license

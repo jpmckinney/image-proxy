@@ -3,15 +3,15 @@
   "version": "0.0.2",
   "description": "A simple image proxy optimized for headshots",
   "keywords": ["image", "proxy"],
-  "homepage": "https://github.com/opennorth/image-proxy",
-  "bugs": "https://github.com/opennorth/image-proxy/issues",
+  "homepage": "https://github.com/jpmckinney/image-proxy",
+  "bugs": "https://github.com/jpmckinney/image-proxy/issues",
   "license": "MIT",
-  "author": "James McKinney <james@opennorth.ca> (http://www.opennorth.ca/)",
+  "author": "James McKinney",
   "main": "./lib/image-proxy",
   "bin": "./bin/image-proxy",
   "repository": {
     "type": "git",
-    "url": "https://github.com/opennorth/image-proxy.git"
+    "url": "https://github.com/jpmckinney/image-proxy.git"
   },
   "scripts": {
     "start": "./bin/image-proxy",
