@@ -209,7 +209,9 @@ describe('GET /:url/:width/:height', function () {
   it('timesout if the request takes too long', function (done) {
     request(app)
       .get('/http%3A%2F%2Flocalhost:8080%2Ftimeout/100/100')
-      .expect(504, done);
+      .expect(504, function () {
+        setTimeout(done, 1000);
+      });
   });
 
   it('supports HTTP', function (done) {
