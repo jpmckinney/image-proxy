@@ -2,11 +2,12 @@ var request = require('supertest')
   , fs = require('fs')
   , http = require('http')
   , https = require('https')
+  , url = require('url')
   , png = fs.readFileSync('test/fixtures/test.png')
   , app = require('../lib/image-proxy')();
 
 function server(req, res) {
-  var path = require('url').parse(req.url).pathname;
+  var path = url.parse(req.url).pathname;
   if (path === '/301') {
     res.writeHead(301, {
       'Location': 'http://localhost:8080/test.png'
