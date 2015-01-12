@@ -3,6 +3,7 @@
 ## 0.0.3
 
 * Handles relative redirects
+* Fix bug in handling timeouts
 
 ## 0.0.2 (2014-10-06)
 
