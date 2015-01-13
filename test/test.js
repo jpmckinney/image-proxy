@@ -91,7 +91,6 @@ var options = {
 
 // @see https://github.com/mikeal/request/issues/418
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-http.globalAgent.maxSockets = 100;
 http.createServer(server).listen(8080);
 https.createServer(options, server).listen(8081);
 
