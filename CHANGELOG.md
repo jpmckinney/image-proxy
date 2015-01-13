@@ -4,6 +4,7 @@
 
 * Handles relative redirects
 * Fix bug in handling timeouts
+* Ensure sockets are released when client closes connection
 
 ## 0.0.2 (2014-10-06)
 
