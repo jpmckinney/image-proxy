@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.0.3
+## 0.0.3 (2014-01-16)
 
 * Handles relative redirects
 * Fix bug in handling timeouts [#9](https://github.com/jpmckinney/image-proxy/issues/9)
