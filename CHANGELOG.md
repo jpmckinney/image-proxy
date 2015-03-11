@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4 (2015-03-11)
+
+* Set a `User-Agent` header
+
 ## 0.0.3 (2014-01-16)
 
 * Handles relative redirects
