@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.5 (2015-03-30)
+
+* Add transcoding support
+
 ## 0.0.4 (2015-03-11)
 
 * Set a `User-Agent` header

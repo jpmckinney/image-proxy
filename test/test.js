@@ -94,7 +94,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 http.createServer(server).listen(8080);
 https.createServer(options, server).listen(8081);
 
-describe('GET /:url/:width/:height', function () {
+describe('GET /:url/:width/:height.:extension?', function () {
   it('fails if a host is not in the whitelist', function (done) {
     request(app)
       .get('/http%3A%2F%2Fgoogle.com/100/100')
@@ -203,6 +203,12 @@ describe('GET /:url/:width/:height', function () {
     request(app)
       .get('/http%3A%2F%2Flocalhost:8080%2Fcomplex.png/100/100')
       .expect('Content-Type', 'image/png')
+      .expect(200, done);
+  });
+  it('returns the requested content type', function (done) {
+    request(app)
+      .get('/http%3A%2F%2Flocalhost:8080%2Fcomplex.png/100/100.jpg')
+      .expect('Content-Type', 'image/jpeg')
       .expect(200, done);
   });
 

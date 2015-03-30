@@ -13,9 +13,9 @@ The code is just over 100 lines, making it easy to tailor to your needs.
 
     npm install
     npm start
-    curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72
+    curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72.jpg
 
-The URL structure is `/:url/:width/:height`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. The equivalent ImageMagick command for the example URL above is:
+The URL structure is `/:url/:width/:height.:extension?`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. If an optional `:extension` parameter is provided, the image will be transcoded to the corresponding file format. The equivalent ImageMagick command for the example URL above is:
 
     convert input.jpg -thumbnail 352x72^> -gravity center -extent 352x72 output.jpg
 
@@ -35,6 +35,7 @@ Image manipulation:
 
 * Accepts a custom width and height, up to 1000x1000
 * Resizes, centers and crops the image
+* Optionally transcodes to another file format
 
 HTTP server:
 
