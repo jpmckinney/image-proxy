@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6 (2015-04-16)
+
+* [Set colorspace to RGB before resizing](http://www.imagemagick.org/Usage/resize/#resize_colorspace), thanks @lizconlan
+
 ## 0.0.5 (2015-03-30)
 
 * Add transcoding support
