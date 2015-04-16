@@ -3,8 +3,6 @@ node_js:
   - "0.11"
   - "0.10"
   - "0.8"
-  - "0.6"
-  # supertest >=0.12.0 uses superagent >=0.18.0, which uses util.deprecate from node >=0.8
 env:
   # express 3.0 was released late 2012
   # gm 1.2.0 added extent and gravity
