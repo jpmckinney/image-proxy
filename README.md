@@ -13,11 +13,11 @@ The code is just over 100 lines, making it easy to tailor to your needs.
 
     npm install
     npm start
-    curl -I http://localhost:5000/http%3A%2F%2Fwww.opennorth.ca%2Fimg%2Fheader_logo.png/352/72.jpg
+    curl -I http://localhost:5000/http%3A%2F%2F1.gravatar.com%2Favatar%2F60f641dfbb4215f1f6d6c059eebf1848/240/80.jpg
 
 The URL structure is `/:url/:width/:height.:extension?`. The `:url` parameter must be escaped/encoded. If the remote image's width or height is greater than the given `:width` or `:height`, it will be resized, maintaining aspect ratio, and cropped. If smaller, it will be padded with white pixels. If an optional `:extension` parameter is provided, the image will be transcoded to the corresponding file format. The equivalent ImageMagick command for the example URL above is:
 
-    convert input.jpg -thumbnail 352x72^> -gravity center -extent 352x72 output.jpg
+    convert input.jpg -thumbnail 240x80^> -gravity center -extent 240x80 output.jpg
 
 The `Cache-Control` header sets a `max-age` of one year.
 
