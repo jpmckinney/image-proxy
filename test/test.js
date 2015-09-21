@@ -82,10 +82,9 @@ function server(req, res) {
         'Content-Type': 'image/png'
       });
       res.end(png, 'binary');
-    } else {
-      res.writeHead(403, {
-        'Location': '/test.png'
-      });
+    }
+    else {
+      res.writeHead(403);
       res.end();
     }
   }
