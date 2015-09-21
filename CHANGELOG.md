@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.7 (2015-09-22)
+
+* Set a `Accept: */*` header [#15](https://github.com/jpmckinney/image-proxy/pull/15)
+
 ## 0.0.6 (2015-04-16)
 
 * [Set colorspace to RGB before resizing](http://www.imagemagick.org/Usage/resize/#resize_colorspace), thanks @lizconlan
