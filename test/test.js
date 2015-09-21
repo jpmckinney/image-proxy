@@ -76,6 +76,19 @@ function server(req, res) {
     });
     res.end(png, 'binary');
   }
+  else if (path === '/error-without-accept-header') {
+    if (req.headers['accept']) {
+      res.writeHead(200, {
+        'Content-Type': 'image/png'
+      });
+      res.end(png, 'binary');
+    } else {
+      res.writeHead(403, {
+        'Location': '/test.png'
+      });
+      res.end();
+    }
+  }
   else {
     res.writeHead(500);
     res.end(path);
@@ -232,6 +245,12 @@ describe('GET /:url/:width/:height.:extension?', function () {
       .get('/https%3A%2F%2Flocalhost:8081%2Ftest.png/100/100')
       .expect('Content-Type', 'image/png')
       .expect('Cache-Control', 'max-age=31536000, public')
+      .expect(200, done);
+  });
+
+  it('sends an accept header in the request', function (done) {
+    request(app)
+      .get('/https%3A%2F%2Flocalhost:8081%2Ferror-without-accept-header/100/100')
       .expect(200, done);
   });
 });
