@@ -1,0 +1,12 @@
+{
+  "name": "image-proxy",
+  "repository": "https://github.com/jpmckinney/image-proxy",
+  "description": "A simple image proxy optimized for headshots",
+  "keywords": ["image", "proxy"],
+  "env": {
+    "NODE_ENV": {
+      "description": "The Node.js environment",
+      "value": "production"
+    }
+  }
+}

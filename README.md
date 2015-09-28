@@ -54,6 +54,8 @@ If you need more features, see [node-imageable](https://github.com/sdepold/node-
 
 ### Heroku
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
     git clone https://github.com/jpmckinney/image-proxy.git
     heroku apps:create
     heroku config:set NODE_ENV=production
