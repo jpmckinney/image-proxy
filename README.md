@@ -58,6 +58,7 @@ If you need more features, see [node-imageable](https://github.com/sdepold/node-
 
     git clone https://github.com/jpmckinney/image-proxy.git
     heroku apps:create
+    heroku config:set BUILDPACK_URL=https://github.com/ddollar/heroku-buildpack-multi
     heroku config:set NODE_ENV=production
     git push heroku master
     heroku apps:open

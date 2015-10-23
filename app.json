@@ -5,6 +5,7 @@
   "keywords": ["image", "proxy"],
   "addons": [],
   "env": {
+    "BUILDPACK_URL": "https://github.com/ddollar/heroku-buildpack-multi",
     "NODE_ENV": "production"
   }
 }
