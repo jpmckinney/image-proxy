@@ -11,6 +11,8 @@ The code is just over 100 lines, making it easy to tailor to your needs.
 
 ## Getting Started
 
+First, [install the dependencies](https://github.com/aheckmann/gm#getting-started) for the `gm` package.
+
     npm install
     npm start
     curl -I http://localhost:5000/http%3A%2F%2F1.gravatar.com%2Favatar%2F60f641dfbb4215f1f6d6c059eebf1848/240/80.jpg
