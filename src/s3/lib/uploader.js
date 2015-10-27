@@ -78,9 +78,7 @@ S3ImageUploader.prototype.upload = function (data) {
     // Save the promise
     promises.push(self.putObject(params));
 
-    return Q.all(promises).then(function(er) {
-      console.log('DEBUG - finished.');
-    });
+    return Q.all(promises);
   }
 };
 

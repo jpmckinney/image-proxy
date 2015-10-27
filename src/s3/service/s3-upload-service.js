@@ -14,7 +14,7 @@ function stringToJson(str) {
   return object;
 }
 
-module.exports = function(err, out) {
+module.exports = function(out) {
 //  module.exports = function(req, res, next) {
   var fileArr = [];
   fileArr.push(out);
@@ -22,10 +22,7 @@ module.exports = function(err, out) {
     return res.error();
   }
 
-  uploader.upload(out).then(function(filePath) {
-    var file = filePath[0];
-    return file;
-  })
+  return uploader.upload(out)
     .fail(function (error) {
       res.statusCode = 500;
       console.log(error);
