@@ -1,3 +1,3 @@
 {
-    "s3Bucket": "qmerce-static-media"
+    "s3Bucket": your-s3-bucket
 }
