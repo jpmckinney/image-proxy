@@ -1,1 +1,3 @@
 /node_modules
+scripts/services/config.js
+config/environments/parameters.json
