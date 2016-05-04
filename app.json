@@ -9,7 +9,7 @@
   },
   "buildpacks": [
     {
-      "url": "https://github.com/ello/heroku-buildpack-imagemagick-cedar-14"
+      "url": "https://github.com/ello/heroku-buildpack-imagemagick"
     },
     {
       "url": "https://github.com/heroku/heroku-buildpack-nodejs"
