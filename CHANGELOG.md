@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+* Fix transcoding to another file format [#21](https://github.com/jpmckinney/image-proxy/pull/22), thanks @equivalentideas
+
 ## 0.0.7 (2015-09-22)
 
 * Set a `Accept: */*` header [#15](https://github.com/jpmckinney/image-proxy/pull/15)
