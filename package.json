@@ -2,7 +2,10 @@
   "name": "image-proxy",
   "version": "0.0.6",
   "description": "A simple image proxy optimized for headshots",
-  "keywords": ["image", "proxy"],
+  "keywords": [
+    "image",
+    "proxy"
+  ],
   "homepage": "https://github.com/jpmckinney/image-proxy",
   "bugs": "https://github.com/jpmckinney/image-proxy/issues",
   "license": "MIT",
@@ -20,7 +23,8 @@
   "dependencies": {
     "express": ">=3",
     "gm": ">=1.2.0",
-    "mime": ">=1.1.0"
+    "mime": ">=1.1.0",
+    "winston": "^2.2.0"
   },
   "devDependencies": {
     "coveralls": "~2.11",
