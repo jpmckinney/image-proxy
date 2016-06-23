@@ -11,6 +11,10 @@ OptionSettings:
     ConnectionDrainingEnabled: true
   aws:elb:loadbalancer:
     CrossZone: true
+    SecurityGroups: sg-6d6cd514
+    LoadBalancerHTTPSPort: 443
+    LoadBalancerSSLPortProtocol: HTTPS
+    SSLCertificateId: arn:aws:iam::148612970729:server-certificate/cloudfront/apester-2016
   aws:elasticbeanstalk:environment:
     ServiceRole: aws-elasticbeanstalk-service-role
   aws:elasticbeanstalk:healthreporting:system:
@@ -18,19 +22,25 @@ OptionSettings:
     SystemType: enhanced
   aws:autoscaling:launchconfiguration:
     IamInstanceProfile: aws-elasticbeanstalk-ec2-role
-    InstanceType: c4x.large
-    EC2KeyName: Staging-2016
+    InstanceType: c4.xlarge
+    EC2KeyName: CoreBackend-2016
     SecurityGroups: sg-6d6cd514
   aws:autoscaling:updatepolicy:rollingupdate:
     RollingUpdateType: Health
     RollingUpdateEnabled: true
   aws:autoscaling:asg:
-    MinSize: 1
-    MaxSize: 2
+    MinSize: 2
+    MaxSize: 4
   aws:ec2:vpc:
     VPCId: vpc-a5e78cc1
     Subnets: subnet-e449bbbc
     ELBSubnets: subnet-e449bbbc
+    AssociatePublicIpAddress: true
+  aws:autoscaling:trigger:
+    LowerThreshold: '20'
+    MeasureName: CPUUtilization
+    UpperThreshold: '40'
+    Unit: Percent
 EnvironmentTier:
   Type: Standard
   Name: WebServer
