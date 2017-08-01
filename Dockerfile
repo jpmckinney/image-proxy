@@ -1,5 +1,6 @@
-FROM node:6.1.0
-COPY . /src
+FROM mirror.gcr.io/library/node:8
+
 WORKDIR /src
-RUN npm install
-CMD npm start
+COPY . /src
+
+CMD ["npm", "start"]
