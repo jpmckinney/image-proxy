@@ -5,6 +5,6 @@ steps:
     env: ['NODE_ENV=production']
 
   - name: gcr.io/cloud-builders/docker
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/image-proxy:$BRANCH_NAME-$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/image-proxy:$COMMIT_SHA', '.']
 images:
-  - gcr.io/$PROJECT_ID/image-proxy:$BRANCH_NAME-$COMMIT_SHA
+  - gcr.io/$PROJECT_ID/image-proxy:$COMMIT_SHA
