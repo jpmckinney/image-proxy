@@ -21,9 +21,9 @@
     "test": "DELAY=100 WHITELIST=localhost mocha"
   },
   "dependencies": {
-    "express": ">=3",
+    "express": "^4.16.1",
     "gm": ">=1.2.0",
-    "mime": ">=1.1.0"
+    "mime": "^2.0.3"
   },
   "devDependencies": {
     "coveralls": "~2.11",
@@ -32,6 +32,6 @@
     "supertest": "~0.11"
   },
   "engines": {
-    "node": ">=0.6.0"
+    "node": ">=8.0.0"
   }
 }
