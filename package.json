@@ -1,8 +1,11 @@
 {
   "name": "image-proxy",
-  "version": "0.0.6",
+  "version": "1.1.0",
   "description": "A simple image proxy optimized for headshots",
-  "keywords": ["image", "proxy"],
+  "keywords": [
+    "image",
+    "proxy"
+  ],
   "homepage": "https://github.com/jpmckinney/image-proxy",
   "bugs": "https://github.com/jpmckinney/image-proxy/issues",
   "license": "MIT",
@@ -18,9 +21,9 @@
     "test": "DELAY=100 WHITELIST=localhost mocha"
   },
   "dependencies": {
-    "express": ">=3",
-    "gm": ">=1.2.0",
-    "mime": ">=1.1.0"
+    "express": "^4.16.1",
+    "gm": "^1.23.0",
+    "mime": "^2.0.3"
   },
   "devDependencies": {
     "coveralls": "~2.11",
@@ -29,6 +32,6 @@
     "supertest": "~0.11"
   },
   "engines": {
-    "node": ">=0.6.0"
+    "node": ">=8.0.0"
   }
 }

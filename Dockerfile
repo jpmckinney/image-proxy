@@ -1,5 +1,8 @@
-FROM node:6.1.0
-COPY . /src
+FROM node:8
+
+RUN apt update && apt install -yq gifsicle
+
 WORKDIR /src
-RUN npm install
-CMD npm start
+COPY . /src
+
+CMD ["npm", "start"]
