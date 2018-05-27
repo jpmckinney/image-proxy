@@ -21,6 +21,7 @@
     "test": "DELAY=100 WHITELIST=localhost mocha"
   },
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.1",
     "gm": "^1.23.0",
     "mime": "^2.0.3"
