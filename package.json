@@ -23,7 +23,7 @@
   "dependencies": {
     "express": ">=3",
     "gm": ">=1.2.0",
-    "mime": ">=2.0.0"
+    "mime": ">=2.0.5"
   },
   "devDependencies": {
     "coveralls": "~2.11",

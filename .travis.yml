@@ -10,7 +10,7 @@ env:
   # express 3.0 was released late 2012
   # gm 1.2.0 added extent and gravity
   # mime 1.1.0 added extension
-  - MODULES="express@~3 gm@1.2.0 mime@2.0.0"
+  - MODULES="express@~3 gm@1.2.0 mime@2.0.5"
   - MODULES=""
 install:
   - npm install $MODULES
